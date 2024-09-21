@@ -1,6 +1,8 @@
 
 #include <iostream>
 #include <cmath>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 const int BMI_CONSTANT = 703;
@@ -67,9 +69,18 @@ void provideRecommendation(double user_BMI, int muscle_level, int fat_level) {
     }
 }
 
+//Function to generate random number between 5 and 15
+int generateRandomExerciseDays() {
+    return rand() % 11 + 15; // generates random number between 5 and 15
+
+}
+
 int main() {
     double weight, height, user_BMI;
+    string fav_activity;
     int muscle_level, fat_level;
+
+    srand(time(0));
 
     cout << "What is your height in inches? " << endl;
     cin >> height;
@@ -88,8 +99,17 @@ int main() {
     cout << "What would you rate your body fat level on a scale from 1 to 10: " << endl;
     cin >> fat_level;
 
-    // Provide recommendation using function
+    cout << "What is you favorite form of exercise/activity: " << endl;
+    cin >> fav_activity;
+
+    // Provide recommendation using functions
     provideRecommendation(user_BMI, muscle_level, fat_level);
+
+    //Generate random number for exercise days to motivate user
+    int exercise_days = generateRandomExerciseDays();
+    cout << "To kickoff your fitness journey, try doing " << fav_activity << " for "
+        << exercise_days << " days this month!" << endl;
+
 
     return 0;
 }
