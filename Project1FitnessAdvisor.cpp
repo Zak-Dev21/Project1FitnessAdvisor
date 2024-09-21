@@ -38,6 +38,7 @@ int main()
         else if (muscle_level < 4 && fat_level >= 4) {
             cout << "You are underweight with higher fat levels. Focus on increasing lean muscle mass through resistance training and balanced eating." << endl;
         }
+    }
     else if (user_BMI >= 18.5 && user_BMI <= 24.9) {
         if (muscle_level >= 7 && fat_level <= 3) {
             cout << "You have a healthy weight with high muscle mass and low fat. Continue maintaining your current fitness routine and balanced diet." << endl;
@@ -61,7 +62,7 @@ int main()
             cout << "You have good muscle mass, but your fat levels are high. Prioritize fat loss with a healthy diet and cardio, while maintaining muscle mass." << endl;
         }
     }
-    }
+    
 
 
 }
