@@ -9,6 +9,7 @@ int main()
     double weight;
     double height;
     int muscle_level;
+    int fat_level;
 
     cout << "What is your height in inches? " << endl;
     cin >> height;
@@ -20,5 +21,9 @@ int main()
 
     cout << "What would you rate your muscle mass level on a scale from 1 to 10";
     cin >> muscle_level;
+
+    cout << "What would you rate your body fat level on a scale from 1 to 10";
+    cin >> fat_level;
+
 
 }
