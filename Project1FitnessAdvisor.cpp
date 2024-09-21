@@ -10,6 +10,7 @@ int main()
     double height;
     int muscle_level;
     int fat_level;
+    const int BMI_Constant = 703;
 
     cout << "What is your height in inches? " << endl;
     cin >> height;
@@ -17,12 +18,12 @@ int main()
     cout << "What is your weight? " << endl;
     cin >> weight;
 
-    user_BMI = 703 * ( (weight) / pow(height, 2) );
+    user_BMI = BMI_Constant * ( (weight) / pow(height, 2) );
 
-    cout << "What would you rate your muscle mass level on a scale from 1 to 10";
+    cout << "What would you rate your muscle mass level on a scale from 1 to 10: " << endl;
     cin >> muscle_level;
 
-    cout << "What would you rate your body fat level on a scale from 1 to 10";
+    cout << "What would you rate your body fat level on a scale from 1 to 10: " << endl;
     cin >> fat_level;
 
     cout << "Your BMI is: " << user_BMI << endl;
