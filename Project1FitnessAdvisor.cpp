@@ -79,38 +79,57 @@ int main() {
     double weight, height, user_BMI;
     string fav_activity;
     int muscle_level, fat_level;
+    char user_choice;
+    string user_input;
 
     srand(time(0));
 
-    cout << "What is your height in inches? " << endl;
-    cin >> height;
+    cout << "Chose between 'p':progress check or 'd': direct check. Enter single character either 'p' or 'd'";
+    cin >> user_choice;
 
-    cout << "What is your weight in pounds? " << endl;
-    cin >> weight;
+    if (user_choice == 'd') {
 
-    // Calculate BMI using function
-    user_BMI = calculateBMI(weight, height);
+        cout << "Would you like to begin direct check? Answer 'yes' or 'done' ";
+        cin >> user_input;
 
-    cout << "Your BMI is: " << user_BMI << endl;
-
-    cout << "What would you rate your muscle mass level on a scale from 1 to 10: " << endl;
-    cin >> muscle_level;
-
-    cout << "What would you rate your body fat level on a scale from 1 to 10: " << endl;
-    cin >> fat_level;
-
-    cout << "What is you favorite form of exercise/activity: " << endl;
-    cin >> fav_activity;
-
-    // Provide recommendation using functions
-    provideRecommendation(user_BMI, muscle_level, fat_level);
-
-    //Generate random number for exercise days to motivate user
-    int exercise_days = generateRandomExerciseDays();
-    cout << "To kickoff your fitness journey, try doing " << fav_activity << " for "
-        << exercise_days << " days this month!" << endl;
+        while (user_input != "done") {
 
 
-    return 0;
+            cout << "What is your height in inches? " << endl;
+            cin >> height;
+
+            cout << "What is your weight in pounds? " << endl;
+            cin >> weight;
+
+            // Calculate BMI using function
+            user_BMI = calculateBMI(weight, height);
+
+            cout << "Your BMI is: " << user_BMI << endl;
+
+            cout << "What would you rate your muscle mass level on a scale from 1 to 10: " << endl;
+            cin >> muscle_level;
+
+            cout << "What would you rate your body fat level on a scale from 1 to 10: " << endl;
+            cin >> fat_level;
+
+            cout << "What is you favorite form of exercise/activity: " << endl;
+            cin >> fav_activity;
+
+            // Provide recommendation using functions
+            provideRecommendation(user_BMI, muscle_level, fat_level);
+
+            //Generate random number for exercise days to motivate user
+            int exercise_days = generateRandomExerciseDays();
+            cout << "To kickoff your fitness journey, try doing " << fav_activity << " for "
+                << exercise_days << " days this month!" << endl;
+
+
+            return 0;
+        }
+
+        cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
+    }
+
+
 }
 
