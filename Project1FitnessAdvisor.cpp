@@ -82,9 +82,15 @@ int main() {
     char user_choice;
     string user_input;
 
+    const int max_entries = 10; // Define the maximum number of entries
+    double bmi_history[max_entries] = { 0 }; // Initialize the BMI history array
+    int muscle_levels[max_entries] = { 0 }; // Initialize muscle levels array
+    int fat_levels[max_entries] = { 0 }; // Initialize fat levels array
+
+
     srand(time(0));
 
-    cout << "Chose between 'p':progress check or 'd': direct check. Enter single character either 'p' or 'd'";
+    cout << "Chose between 'p':progress check or 'd': direct check. Enter single character either 'p' or 'd'" << endl;
     cin >> user_choice;
 
     if (user_choice == 'd') {
@@ -92,7 +98,7 @@ int main() {
         
 
         while (true) {
-            cout << "Would you like to begin direct check? Answer 'yes' or 'done' ";
+            cout << "Would you like to begin direct check? Answer 'yes' or 'done' " << endl;
             cin >> user_input;
 
             if (user_input == "done") {
@@ -136,6 +142,44 @@ int main() {
         cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
         
 
+    }
+
+    if (user_choice == 'p') {
+        int count = 0;
+        while (true) {
+     
+            cout << "Would you like to begin progess check? Answer 'yes' or 'done' " << endl;
+            cin >> user_input;
+
+            if (user_input == "done") {
+                break;
+            }
+
+        
+
+            cout << "What is your height in inches? " << endl;
+            cin >> height;
+
+            cout << "What is your weight in pounds? " << endl;
+            cin >> weight;
+
+            // Calculate BMI using function
+            user_BMI = calculateBMI(weight, height);
+
+            cout << "Your BMI is: " << user_BMI << endl;
+
+            cout << "What would you rate your muscle mass level on a scale from 1 to 10: " << endl;
+            cin >> muscle_level;
+
+            cout << "What would you rate your body fat level on a scale from 1 to 10: " << endl;
+            cin >> fat_level;
+
+            bmi_history[count] = user_BMI;
+            muscle_levels[count] = muscle_level;
+            fat_levels[count] = fat_level;
+
+            
+        }
     }
 
     return 0;
