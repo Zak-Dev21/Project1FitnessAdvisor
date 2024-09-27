@@ -92,7 +92,7 @@ int main() {
         cout << "Would you like to begin direct check? Answer 'yes' or 'done' ";
         cin >> user_input;
 
-        while (user_input != "done") {
+        if (user_input != "done") {
 
 
             cout << "What is your height in inches? " << endl;
