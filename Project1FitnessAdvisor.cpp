@@ -89,11 +89,15 @@ int main() {
 
     if (user_choice == 'd') {
 
-        cout << "Would you like to begin direct check? Answer 'yes' or 'done' ";
-        cin >> user_input;
+        
 
-        if (user_input != "done") {
+        while (true) {
+            cout << "Would you like to begin direct check? Answer 'yes' or 'done' ";
+            cin >> user_input;
 
+            if (user_input == "done") {
+                break;
+            }
 
             cout << "What is your height in inches? " << endl;
             cin >> height;
@@ -125,16 +129,15 @@ int main() {
             cout << "To kickoff your fitness journey, try doing " << fav_activity << " for "
                 << exercise_days << " days this month!" << endl;
 
-            
 
         
         }
 
         cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
-        return 0;
+        
 
     }
 
-
+    return 0;
 }
 
