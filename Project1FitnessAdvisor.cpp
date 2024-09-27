@@ -123,11 +123,11 @@ int main() {
             cout << "To kickoff your fitness journey, try doing " << fav_activity << " for "
                 << exercise_days << " days this month!" << endl;
 
+            cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
 
             return 0;
         }
 
-        cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
     }
 
 
