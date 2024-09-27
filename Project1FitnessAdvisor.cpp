@@ -115,8 +115,12 @@ int main() {
             cout << "What is you favorite form of exercise/activity: " << endl;
             cin >> fav_activity;
 
+            cout << "prior to recemmendation";
+
             // Provide recommendation using functions
             provideRecommendation(user_BMI, muscle_level, fat_level);
+
+            cout << "after recemmendation";
 
             //Generate random number for exercise days to motivate user
             int exercise_days = generateRandomExerciseDays();
