@@ -146,19 +146,23 @@ int main() {
 
     if (user_choice == 'p') {
         int count = 0;
+        cout << "What is your height in inches? " << endl;
+        cin >> height;
+
+        
         while (true) {
-     
-            cout << "Would you like to begin progess check? Answer 'yes' or 'done' " << endl;
+            cout << "Would you like to initiate progess check? Answer 'yes' or 'done' " << endl << "Keep in mind you only have a maximum of 10 entries to enter." << endl;
             cin >> user_input;
+            
 
             if (user_input == "done") {
                 break;
             }
 
-        
+            //cout << "Keep in mind when entering you info you do have a maximum of 10 entries";
 
-            cout << "What is your height in inches? " << endl;
-            cin >> height;
+        
+            
 
             cout << "What is your weight in pounds? " << endl;
             cin >> weight;
@@ -166,7 +170,7 @@ int main() {
             // Calculate BMI using function
             user_BMI = calculateBMI(weight, height);
 
-            cout << "Your BMI is: " << user_BMI << endl;
+            //cout << "Your BMI is: " << user_BMI << endl;
 
             cout << "What would you rate your muscle mass level on a scale from 1 to 10: " << endl;
             cin >> muscle_level;
