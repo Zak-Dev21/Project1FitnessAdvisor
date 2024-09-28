@@ -107,7 +107,7 @@ int main() {
     int fat_levels[max_entries] = { 0 }; // Initialize fat levels array
 
 
-    srand(time(0));
+    srand(static_cast<unsigned int>(time(0)));
 
     cout << "Chose between 'p':progress check or 'd': direct check. Enter single character either 'p' or 'd'" << endl;
     cin >> user_choice;
