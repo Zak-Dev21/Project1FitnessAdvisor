@@ -199,9 +199,24 @@ int main() {
 
     if (user_choice == 'p') {
         int count = 0;
-        cout << "What is your height in inches? " << endl;
-        cin >> height;
+        // Input height with validation
+        while (true) {
+            cout << "What is your height in inches? " << endl;
+            cin >> user_input;
 
+            if (isValidNumber(user_input)) {
+                height = stod(user_input); // Convert string to double
+                if (height > 0) {
+                    break; // Valid input, exit loop
+                }
+                else {
+                    cout << "Invalid input. Please enter a positive value for height." << endl;
+                }
+            }
+            else {
+                cout << "Invalid input. Please enter a numeric value for height." << endl;
+            }
+        }
         
         while (true) {
             cout << "Would you like to initiate progess check? Answer 'yes' or 'done' " << endl << "Keep in mind you only have a maximum of 10 entries to enter." << endl;
@@ -241,7 +256,7 @@ int main() {
         // Display stored progress
         cout << "Here is your progress:" << endl;
         for (int i = 0; i < count; ++i) {
-            cout << "Entry " << (i + 1) << ": BMI = " << bmi_history[i]
+            cout << "Result " << (i + 1) << ": BMI = " << bmi_history[i]
                 << ", Muscle Level = " << muscle_levels[i]
                 << ", Fat Level = " << fat_levels[i] << endl;
         }
