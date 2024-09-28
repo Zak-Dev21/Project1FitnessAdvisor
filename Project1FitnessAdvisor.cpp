@@ -178,7 +178,15 @@ int main() {
             muscle_levels[count] = muscle_level;
             fat_levels[count] = fat_level;
 
-            
+            count++;
+        }
+
+        // Display stored progress
+        cout << "Here is your progress:" << endl;
+        for (int i = 0; i < count; ++i) {
+            cout << "Entry " << (i + 1) << ": BMI = " << bmi_history[i]
+                << ", Muscle Level = " << muscle_levels[i]
+                << ", Fat Level = " << fat_levels[i] << endl;
         }
     }
 
