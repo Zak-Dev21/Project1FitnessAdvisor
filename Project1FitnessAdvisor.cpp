@@ -166,6 +166,11 @@ int main() {
 
             cout << "Your BMI is: " << user_BMI << endl;
 
+            if (user_BMI > 40) {
+                cout << "Your BMI exceeds the limit of 40. Please consult a healthcare professional for advice." << endl;
+                continue; // Skip further inputs if BMI is too high
+            }
+
             cout << "What would you rate your muscle mass level on a scale from 1 to 10: " << endl;
             cin >> muscle_level;
 
@@ -232,8 +237,24 @@ int main() {
         
             
 
-            cout << "What is your weight in pounds? " << endl;
-            cin >> weight;
+            // Input weight with validation
+            while (true) {
+                cout << "What is your weight in pounds? " << endl;
+                cin >> user_input;
+
+                if (isValidNumber(user_input)) {
+                    weight = stod(user_input); // Convert string to double
+                    if (weight > 0) {
+                        break; // Valid input, exit loop
+                    }
+                    else {
+                        cout << "Invalid input. Please enter a positive value for weight." << endl;
+                    }
+                }
+                else {
+                    cout << "Invalid input. Please enter a numeric value for weight." << endl;
+                }
+            }
 
             // Calculate BMI using function
             user_BMI = calculateBMI(weight, height);
