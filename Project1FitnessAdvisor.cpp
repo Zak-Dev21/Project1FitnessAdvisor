@@ -3,6 +3,8 @@
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
+#include <string>
 using namespace std;
 
 const int BMI_CONSTANT = 703;
@@ -12,7 +14,7 @@ double calculateBMI(double weight, double height) {
     return BMI_CONSTANT * (weight / pow(height, 2));
 }
 
-/*string GoalBMIchecker(user_BMI, goalBMI) {
+/*void provideRecommendation(double user_BMI_goal, int muscle_level_goal, int fat_level_goal) {
     if (user_BMI == goalBMI) {
         cout << "You reached your BMI goal!"
     }
@@ -82,6 +84,16 @@ int generateRandomExerciseDays() {
 
 }
 
+// Function to check if a string is a valid number
+bool isValidNumber(const string& input) {
+    for (char c : input) {
+        if (!isdigit(c) && c != '.') {
+            return false;
+        }
+    }
+    return true;
+}
+
 int main() {
     double weight, height, user_BMI;
     string fav_activity;
@@ -112,12 +124,43 @@ int main() {
                 break;
             }
 
-            cout << "What is your height in inches? " << endl;
-            cin >> height;
+            // Input height with validation
+            while (true) {
+                cout << "What is your height in inches? " << endl;
+                cin >> user_input;
 
-            cout << "What is your weight in pounds? " << endl;
-            cin >> weight;
+                if (isValidNumber(user_input)) {
+                    height = stod(user_input); // Convert string to double
+                    if (height > 0) {
+                        break; // Valid input, exit loop
+                    }
+                    else {
+                        cout << "Invalid input. Please enter a positive value for height." << endl;
+                    }
+                }
+                else {
+                    cout << "Invalid input. Please enter a numeric value for height." << endl;
+                }
+            }
 
+            // Input weight with validation
+            while (true) {
+                cout << "What is your weight in pounds? " << endl;
+                cin >> user_input;
+
+                if (isValidNumber(user_input)) {
+                    weight = stod(user_input); // Convert string to double
+                    if (weight > 0) {
+                        break; // Valid input, exit loop
+                    }
+                    else {
+                        cout << "Invalid input. Please enter a positive value for weight." << endl;
+                    }
+                }
+                else {
+                    cout << "Invalid input. Please enter a numeric value for weight." << endl;
+                }
+            }
             // Calculate BMI using function
             user_BMI = calculateBMI(weight, height);
 
