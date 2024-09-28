@@ -12,6 +12,13 @@ double calculateBMI(double weight, double height) {
     return BMI_CONSTANT * (weight / pow(height, 2));
 }
 
+/*string GoalBMIchecker(user_BMI, goalBMI) {
+    if (user_BMI == goalBMI) {
+        cout << "You reached your BMI goal!"
+    }
+}
+*/
+
 // Function to provide recommendation based on BMI, muscle, and fat levels
 void provideRecommendation(double user_BMI, int muscle_level, int fat_level) {
     string recommendations[4][4] = { //initializing 2d array to store strings of recommendatiions and make them accessable easily
