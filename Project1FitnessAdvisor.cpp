@@ -122,12 +122,13 @@ int main() {
             cout << "What would you rate your body fat level on a scale from 1 to 10: " << endl;
             cin >> fat_level;
 
+            provideRecommendation(user_BMI, muscle_level, fat_level);
+
             cout << "What is you favorite form of exercise/activity: " << endl;
             cin >> fav_activity;
 
 
-            // Provide recommendation using functions
-            provideRecommendation(user_BMI, muscle_level, fat_level);
+            
 
 
             //Generate random number for exercise days to motivate user
@@ -139,6 +140,8 @@ int main() {
         
         }
 
+        
+        
         cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
         
 
