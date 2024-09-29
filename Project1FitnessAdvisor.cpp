@@ -443,11 +443,13 @@ int main() {
 
                 //cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
             }
-        break;
+        
         cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
+        break;
 
         }
-
+        cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
+        break;
 
     }
 
