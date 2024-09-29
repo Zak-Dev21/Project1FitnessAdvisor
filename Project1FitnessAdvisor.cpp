@@ -380,8 +380,8 @@ int main() {
             //cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
         }
         
-        cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
-        break;
+        //cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
+        //break;
         
 
         if (user_choice == "m") {
@@ -447,12 +447,12 @@ int main() {
                 //cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
             }
         
-        cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
-        break;
+        //cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
+        //break;
 
         }
-        cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
-        break;
+        //cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
+        //break;
 
     }
 
