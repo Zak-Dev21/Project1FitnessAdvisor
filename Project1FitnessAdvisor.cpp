@@ -168,7 +168,11 @@ int main() {
     cout << "Chose between 'p':progress check or 'd': direct check or 'm': muscle exercise recemmondations. Enter single character either 'p' or 'd' or 'm' " << endl;
     cin >> user_choice;
 
-    while (true) {
+    while ((user_choice != 'm') && (user_choice != 'd') && (user_choice != 'p')) {
+
+        cout << "You did not enter a valid input. Please enter one character.";
+        cout << "Either 'm' , 'd', 'p' make sure to not include quotes.";
+        cin >> user_choice;
         if (user_choice == 'd') {
 
 
@@ -427,6 +431,7 @@ int main() {
             cin >> user_choice;
         }
         */
+        
 
     }
 
