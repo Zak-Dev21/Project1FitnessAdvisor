@@ -421,10 +421,10 @@ int main() {
 
         }
 
-        if ((user_choice != 'm') && (user_choice != 'd') && (user_choice != 'm')) {
+        if ((user_choice != 'm') && (user_choice != 'd') && (user_choice != 'p')) {
             cout << "You did not enter a valid input. Please enter one character.";
             "Either 'm' , 'd', 'p' make sure to not include quotes.";
-            break;
+            cin >> user_choice;
         }
     }
 
