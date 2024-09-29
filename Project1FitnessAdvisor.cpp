@@ -296,10 +296,11 @@ int main() {
             // Input height with validation
             while (true) {
                 cout << "What is your height in inches? " << endl;
-                cin >> user_input;
+                cin >> height;
+                
 
-                if (isValidNumber(user_input)) {
-                    height = stod(user_input); // Convert string to double
+                if (isValidNumber(to_string(height))) {
+                    
                     if (height > 0) {
                         break; // Valid input, exit loop
                     }
@@ -380,8 +381,6 @@ int main() {
             //cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
         }
         
-        //cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
-        //break;
         
 
         if (user_choice == "m") {
