@@ -14,12 +14,7 @@ double calculateBMI(double weight, double height) {
     return BMI_CONSTANT * (weight / pow(height, 2));
 }
 
-/*void provideRecommendation(double user_BMI_goal, int muscle_level_goal, int fat_level_goal) {
-    if (user_BMI == goalBMI) {
-        cout << "You reached your BMI goal!"
-    }
-}
-*/
+
 
 // Function to provide recommendation based on BMI, muscle, and fat levels
 void provideRecommendation(double user_BMI, int muscle_level, int fat_level) {
@@ -38,7 +33,8 @@ void provideRecommendation(double user_BMI, int muscle_level, int fat_level) {
          "You have good muscle mass, but your fat levels are high. Prioritize fat loss with a healthy diet and cardio, while maintaining muscle mass."}
     };
 
-    if (user_BMI <= 18.4) {
+    if (user_BMI <= 18.4) { //checking if user falls in underwight category for BMI
+        // checking further with muscle and fat levels to see where user falls and provide accurate recommendation
         if (muscle_level < 4 && fat_level < 4) {
             cout << recommendations[0][0] << endl;
         }
@@ -49,7 +45,7 @@ void provideRecommendation(double user_BMI, int muscle_level, int fat_level) {
             cout << recommendations[0][2] << endl;
         }
     }
-    else if (user_BMI >= 18.5 && user_BMI <= 24.9) {
+    else if (user_BMI >= 18.5 && user_BMI <= 24.9) { // checking if user falls into mid-range category for BMI
         if (muscle_level >= 7 && fat_level <= 3) {
             cout << recommendations[1][0] << endl;
         }
@@ -120,9 +116,9 @@ void provideRecommendation(int age, int activity_level, string &health_condition
     }
 }
 
-//Function to generate random number between 5 and 15
+//Function to generate random number between 15 and 25
 int generateRandomExerciseDays() {
-    return rand() % 11 + 15; // generates random number between 5 and 15
+    return rand() % 11 + 15; // generates random number between 15 and 25
 
 }
 
@@ -160,18 +156,18 @@ int main() {
         {"Plank", "Crunch", "Leg Raises"}     // Core
     };
 
-    int numMuscleGroups = sizeof(muscleGroups) / sizeof(muscleGroups[0]);
+    int numMuscleGroups = sizeof(muscleGroups) / sizeof(muscleGroups[0]); // calculating the number of elements in the muscleGroups array.
 
 
-    srand(static_cast<unsigned int>(time(0)));
+    srand(static_cast<unsigned int>(time(0))); // seed the random number generator so new number shows every execution
 
     cout << "Chose between 'p':progress check (track progress over time) or 'd': direct fitness check or 'm': muscle exercise recemmondations. Enter single character either 'p' or 'd' or 'm' " << endl;
-    cin >> user_choice;
+    cin >> user_choice; // prompting user to chose which feature to use for program
 
     while ((user_choice != "m") && (user_choice != "d") && (user_choice != "p")) {
         cout << "Invalid input. Please enter 'm', 'd', or 'p'." << endl;
         cin >> user_choice;
-    }
+    } // making sure user enter given characters and nothing else, handling edge case for possibilities here
 
     while (true) {
         if (user_choice == "d") {
@@ -318,7 +314,7 @@ int main() {
 
             while (true) {
                 cout << "Would you like to initiate progess check? Answer 'yes' or 'no' " << endl << "Keep in mind you only have a maximum of 10 entries to enter." << endl;
-                cin >> user_input;
+                cin >> user_input; // prompting user to either run checker feature or exit
 
 
                 if (user_input == "no") {
@@ -378,8 +374,12 @@ int main() {
                 cout << "Result " << (i + 1) << ": BMI = " << bmi_history[i]
                     << ", Muscle Level = " << muscle_levels[i]
                     << ", Fat Level = " << fat_levels[i] << endl;
+
+                
             }
+            //cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
         }
+        cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
 
         if (user_choice == "m") {
             // User input for weak muscle groups
@@ -430,16 +430,21 @@ int main() {
 
                 for (int i = 0; i < index; ++i) { // Loop only through valid inputs
                     int weakness = userWeaknesses[i];
-                    if (weakness >= 0 && weakness < numMuscleGroups) {
+                    if (weakness >= 0 && weakness < numMuscleGroups) { // check user's number falls in the number limit for muscle groups array
                         cout << muscleGroups[weakness] << " exercises:" << endl;
                         for (int j = 0; j < 3; ++j) { // Assuming each muscle group has 3 exercises
                             cout << "- " << exercises[weakness][j] << endl;
                         }
                     }
+                    
                 }
+                //cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
                 break; // Exit the loop after successful input
-            }
 
+                //cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
+            }
+        break;
+        cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
 
         }
 
