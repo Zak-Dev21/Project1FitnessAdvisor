@@ -165,7 +165,7 @@ int main() {
 
     srand(static_cast<unsigned int>(time(0)));
 
-    cout << "Chose between 'p':progress check or 'd': direct check or 'm': muscle exercise recemmondations. Enter single character either 'p' or 'd' or 'm' " << endl;
+    cout << "Chose between 'p':progress check (track progress over time) or 'd': direct fitness check or 'm': muscle exercise recemmondations. Enter single character either 'p' or 'd' or 'm' " << endl;
     cin >> user_choice;
 
     while ((user_choice != "m") && (user_choice != "d") && (user_choice != "p")) {
@@ -177,10 +177,10 @@ int main() {
         if (user_choice == "d") {
 
             while (true) {
-                cout << "Would you like to begin direct check? Answer 'yes' or 'done' " << endl;
+                cout << "Would you like to begin direct check? Answer 'yes' or 'no' " << endl;
                 cin >> user_input;
 
-                if (user_input == "done") {
+                if (user_input == "no") {
                     break;
                 }
 
@@ -243,11 +243,30 @@ int main() {
                     continue; // Skip further inputs if BMI is too high
                 }
 
-                cout << "What would you rate your muscle mass level on a scale from 1 to 10: " << endl;
-                cin >> muscle_level;
+                while (true) {
+                    cout << "What would you rate your muscle mass level on a scale from 1 to 10: " << endl;
+                    cin >> muscle_level;
 
-                cout << "What would you rate your body fat level on a scale from 1 to 10: " << endl;
-                cin >> fat_level;
+                    if (muscle_level >= 1 && muscle_level <= 10) {
+                        break; // valid input, exit the loop
+                    }
+                    else {
+                        cout << "Invalid input. Please enter a number between 1 and 10." << endl;
+                    }
+                }
+
+                // Input and validation for fat level
+                while (true) {
+                    cout << "What would you rate your body fat level on a scale from 1 to 10: " << endl;
+                    cin >> fat_level;
+
+                    if (fat_level >= 1 && fat_level <= 10) {
+                        break; // valid input, exit the loop
+                    }
+                    else {
+                        cout << "Invalid input. Please enter a number between 1 and 10." << endl;
+                    }
+                }
 
                 provideRecommendation(user_BMI, muscle_level, fat_level);
 
@@ -298,11 +317,11 @@ int main() {
             }
 
             while (true) {
-                cout << "Would you like to initiate progess check? Answer 'yes' or 'done' " << endl << "Keep in mind you only have a maximum of 10 entries to enter." << endl;
+                cout << "Would you like to initiate progess check? Answer 'yes' or 'no' " << endl << "Keep in mind you only have a maximum of 10 entries to enter." << endl;
                 cin >> user_input;
 
 
-                if (user_input == "done") {
+                if (user_input == "no") {
                     break;
                 }
 
@@ -424,25 +443,6 @@ int main() {
 
         }
 
-        
-        /*if (user_choice.length() == 1) {
-            
-
-            if ((user_choice != "m") && (user_choice != "d") && (user_choice != "p")) {
-                cout << "Invalid input. Please enter 'm', 'd', or 'p'." << endl;
-            }
-        }
-        else {
-            cout << "Invalid input. Please enter a single character." << endl;
-        }
-        */
-
-        /*while ((user_choice != 'm') && (user_choice != 'd') && (user_choice != 'p')) {
-            cout << "You did not enter a valid input. Please enter one character.";
-            //cout << "Either 'm' , 'd', 'p' make sure to not include quotes.";
-            cin >> user_choice;
-        } */
-        
 
     }
 
