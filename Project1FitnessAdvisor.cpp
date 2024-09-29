@@ -379,7 +379,10 @@ int main() {
             }
             //cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
         }
+        
         cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
+        break;
+        
 
         if (user_choice == "m") {
             // User input for weak muscle groups
