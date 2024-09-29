@@ -140,7 +140,7 @@ int main() {
     double weight, height, user_BMI;
     string fav_activity;
     int muscle_level, fat_level;
-    char user_choice;
+    string user_choice;
     string user_input;
     int age;
     int activity_level;
@@ -168,14 +168,13 @@ int main() {
     cout << "Chose between 'p':progress check or 'd': direct check or 'm': muscle exercise recemmondations. Enter single character either 'p' or 'd' or 'm' " << endl;
     cin >> user_choice;
 
-    while ((user_choice != 'm') && (user_choice != 'd') && (user_choice != 'p')) {
-
-        cout << "You did not enter a valid input. Please enter one character.";
-        cout << "Either 'm' , 'd', 'p' make sure to not include quotes.";
+    while ((user_choice != "m") && (user_choice != "d") && (user_choice != "p")) {
+        cout << "Invalid input. Please enter 'm', 'd', or 'p'." << endl;
         cin >> user_choice;
-        if (user_choice == 'd') {
+    }
 
-
+    while (true) {
+        if (user_choice == "d") {
 
             while (true) {
                 cout << "Would you like to begin direct check? Answer 'yes' or 'done' " << endl;
@@ -277,7 +276,7 @@ int main() {
 
         }
 
-        if (user_choice == 'p') {
+        if (user_choice == "p") {
             int count = 0;
             // Input height with validation
             while (true) {
@@ -363,7 +362,7 @@ int main() {
             }
         }
 
-        if (user_choice == 'm') {
+        if (user_choice == "m") {
             // User input for weak muscle groups
             cout << "Which muscle groups do you consider weak? Enter numbers (0-4) corresponding to:" << endl;
             for (int i = 0; i < numMuscleGroups; ++i) {
@@ -425,12 +424,24 @@ int main() {
 
         }
 
+        
+        /*if (user_choice.length() == 1) {
+            
+
+            if ((user_choice != "m") && (user_choice != "d") && (user_choice != "p")) {
+                cout << "Invalid input. Please enter 'm', 'd', or 'p'." << endl;
+            }
+        }
+        else {
+            cout << "Invalid input. Please enter a single character." << endl;
+        }
+        */
+
         /*while ((user_choice != 'm') && (user_choice != 'd') && (user_choice != 'p')) {
             cout << "You did not enter a valid input. Please enter one character.";
             //cout << "Either 'm' , 'd', 'p' make sure to not include quotes.";
             cin >> user_choice;
-        }
-        */
+        } */
         
 
     }
