@@ -171,14 +171,8 @@ int main() {
 
     while (true) {
 
-
-
-
-
-
         if (user_choice == "d") {
 
-            while (true) {
                 cout << "Would you like to begin direct check? Answer 'yes' or 'no' " << endl;
                 cin >> user_input;
 
@@ -231,7 +225,7 @@ int main() {
                 cin >> activity_level;
 
                 cout << "Do you have a health condition involving the following? (diabetic, heart, joint)."
-                    "If yes enter it, otherwise enter 'other' if you have other health conditions, or enter 'none' if you have none.";
+                    "If yes enter it, otherwise enter 'other' if you have other health conditions, or enter 'none' if you have none." << endl;
                 cin >> health_condition;
 
 
@@ -288,11 +282,8 @@ int main() {
 
 
 
-            }
-
-
-
-            cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
+            cout << "YOU HAVE FINISHED USING PROGRAM! THANKS" <<endl;
+            break;
 
 
         }
