@@ -391,13 +391,22 @@ int main() {
             int userWeaknesses[5] = { -1, -1, -1, -1, -1 }; // Initialize to -1 to indicate unused slots
 
 
-            cout << "Would you like to initiate muscle reccomendation checker? Enter 'no' without quotes if you want to exit program. " << endl;
-            cin >> user_input;
 
-            if (user_input == "no") {
-                cout << "You have come to the end of this program. Thanks!" << endl;
-                break;
-            }
+                cout << "Would you like to start muscle recommendation feature of this program? Enter 'no' without quotes to exit or 'yes' without quotes to proceed. " << endl;
+                cin >> user_input;
+
+            
+                if ((user_input != "yes") && (user_input != "no")) {
+                    cout << "You entered an invalid input. Please enter yes or no without upper case or quotes. " << endl;
+                    continue;
+                }
+
+
+                if (user_input == "no") {
+                    cout << "You have come to the end of this program. Thanks!" << endl;
+                    break;
+                }
+            
 
 
                 string input;
@@ -408,11 +417,14 @@ int main() {
                     cout << i << ": " << muscleGroups[i] << endl;
                 }
 
-                cout << "Enter your choices (comma-separated, e.g., 0,2). Or enter 'no without quotes to exit program. " << endl;
+
+                cout << "Enter your choices (comma-separated, e.g., 0,2). Or enter 'no' without quotes to exit program or 'yes' to continue. " << endl;
                 cin >> input;
 
 
-                if (input != "no") {
+
+
+                if (true) {
 
 
 
@@ -472,7 +484,7 @@ int main() {
 
 
 
-
+          
 
 
         }
