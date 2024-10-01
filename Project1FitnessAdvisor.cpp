@@ -170,6 +170,15 @@ int main() {
     } // making sure user enter given characters and nothing else, handling edge case for possibilities here
 
     while (true) {
+
+        while ((user_choice != "d") && (user_choice != "m") && (user_choice != "p")) {
+            cout << "You enter invalid input. Please try again and enter given charachters. " << endl;
+            cin >> user_choice;
+        }
+
+
+
+
         if (user_choice == "d") {
 
             while (true) {
@@ -293,37 +302,11 @@ int main() {
 
         if (user_choice == "p") {
             int count = 0;
-            // Input height with validation
-            /*while (true) {
-                cout << "What is your height in inches? " << endl;
-                cin >> height;
-                
-
-                if (isValidNumber(to_string(height))) {
-                    
-                    if (height > 0) {
-                        break; // Valid input, exit loop
-                    }
-                    else {
-                        cout << "Invalid input. Please enter a positive value for height." << endl;
-                    }
-                }
-                else {
-                    cout << "Invalid input. Please enter a numeric value for height." << endl;
-                }
-            }
-            */
 
             while (true) {
                 cout << "Would you like to initiate progess check? Answer 'yes' or 'no' " << endl << "Keep in mind you only have a maximum of 10 entries to enter." << endl;
                 cin >> user_input; // prompting user to either run checker feature or exit
 
-
-                if (user_input == "no") {
-                    cout << "You have finished progress check!" << endl;
-                    cout << "YOU HAVE FINISHED USING PROGRAM! THANKS" << endl;
-                    break;
-                }
 
                 //cout << "Keep in mind when entering you info you do have a maximum of 10 entries";
 
@@ -400,7 +383,10 @@ int main() {
 
                 
             }
-            //cout << "YOU HAVE FINISHED USING PROGRAM! THANKS" << endl;
+            if (user_input == "no") {
+                cout << "You have finished the progress check feature for this program. Thanks!" << endl;
+                break;
+            }
         }
         
         
