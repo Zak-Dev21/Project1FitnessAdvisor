@@ -387,80 +387,107 @@ int main() {
                 cout << "You have finished the progress check feature for this program. Thanks!" << endl;
                 break;
             }
+        
         }
         
         
 
         if (user_choice == "m") {
+            
+            //cout << "Would you like to initiate muscle reccomendation checker? " << endl;
+            //cin >> input;
             // User input for weak muscle groups
-            cout << "Which muscle groups do you consider weak? Enter numbers (0-4) corresponding to:" << endl;
-            for (int i = 0; i < numMuscleGroups; ++i) {
-                cout << i << ": " << muscleGroups[i] << endl;
-            }
+            
 
             // Array to store user's weaknesses (maximum 5 weak muscle groups)
             int userWeaknesses[5] = { -1, -1, -1, -1, -1 }; // Initialize to -1 to indicate unused slots
-            string input;
 
             while (true) {
-                // Collect user input
-                cout << "Enter your choices (comma-separated, e.g., 0,2): ";
-                cin >> input;
+                string input;
+                string user_input;
+                cout << "Would you like to initiate muscle reccomendation checker? Enter 'no' without quotes if you want to exit program. " << endl;
+                cin >> user_input;
 
-                // Validate input
-                bool validInput = true;
-                int index = 0;
+                if (user_input == "no") {
+                    cout << "You have come to the end of this program. Thanks!" << endl;
+                    break;
+                }
 
-                // Check each character in the input string
-                for (size_t i = 0; i < input.length(); ++i) {
-                    if (isdigit(input[i])) {
-                        int num = input[i] - '0'; // Convert char to int
-                        if (num >= 0 && num <= 4) {
-                            if (index < 5) {
-                                userWeaknesses[index++] = num; // Store the valid number
+                cout << "Which muscle groups do you consider weak? Enter numbers (0-4) corresponding to:" << endl;
+                for (int i = 0; i < numMuscleGroups; ++i) {
+                    cout << i << ": " << muscleGroups[i] << endl;
+                }
+                while (input != "no") {
+
+                    if (input == "no") {
+                        //bool validInput = false;
+                        cout << "You have come to the end of this program. Thanks!";
+                        break;
+                    }
+
+
+                    // Collect user input for selesting numbers that represent muscle weaknesses
+                    cout << "Enter your choices (comma-separated, e.g., 0,2). Or enter 'no without quotes to exit program. "<< endl;
+                    cin >> input;
+
+
+
+                    // Validate input
+                    bool validInput = true;
+                    int index = 0;
+
+                    // Check each character in the input string
+                    for (size_t i = 0; i < input.length(); ++i) {
+                        if (isdigit(input[i])) {
+                            int num = input[i] - '0'; // Convert char to int
+                            if (num >= 0 && num <= 4) {
+                                if (index < 5) {
+                                    userWeaknesses[index++] = num; // Store the valid number
+                                }
+                            }
+                            else {
+                                validInput = false; // Number out of range
                             }
                         }
-                        else {
-                            validInput = false; // Number out of range
+                        else if (input[i] != ',' && input[i] != ' ') {
+                            validInput = false; // Invalid character found
                         }
                     }
-                    else if (input[i] != ',' && input[i] != ' ') {
-                        validInput = false; // Invalid character found
+
+                    // Ensure valid input
+                    if (!validInput || index == 0) {
+                        cout << "Invalid input. Please enter numbers (0-4) separated by commas." << endl;
+                        continue; // Prompt for input again
                     }
-                }
 
-                // Ensure valid input
-                if (!validInput || index == 0) {
-                    cout << "Invalid input. Please enter numbers (0-4) separated by commas." << endl;
-                    continue; // Prompt for input again
-                }
+                    // Display exercises for weak muscle groups
+                    cout << "Here are some exercises for your weak muscle groups:" << endl;
 
-                // Display exercises for weak muscle groups
-                cout << "Here are some exercises for your weak muscle groups:" << endl;
-
-                for (int i = 0; i < index; ++i) { // Loop only through valid inputs
-                    int weakness = userWeaknesses[i];
-                    if (weakness >= 0 && weakness < numMuscleGroups) { // check user's number falls in the number limit for muscle groups array
-                        cout << muscleGroups[weakness] << " exercises:" << endl;
-                        for (int j = 0; j < 3; ++j) { // Assuming each muscle group has 3 exercises
-                            cout << "- " << exercises[weakness][j] << endl;
+                    for (int i = 0; i < index; ++i) { // Loop only through valid inputs
+                        int weakness = userWeaknesses[i];
+                        if (weakness >= 0 && weakness < numMuscleGroups) { // check user's number falls in the number limit for muscle groups array
+                            cout << muscleGroups[weakness] << " exercises:" << endl;
+                            for (int j = 0; j < 3; ++j) { // Assuming each muscle group has 3 exercises
+                                cout << "- " << exercises[weakness][j] << endl;
+                            }
                         }
-                    }
-                    
-                }
-                //cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
-                break; // Exit the loop after successful input
 
-                //cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
+                    }
+
+                 
+
+
+                }
+
+
+
+                if (input == "no") {
+                    cout << "You have come to the end of this program. Thanks!";
+                    break;
+                }
             }
-        
-        //cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
-        //break;
 
         }
-        //cout << "YOU HAVE FINISHED USING PROGRAM! THANKS";
-        //break;
-
     }
 
     return 0;
