@@ -171,10 +171,7 @@ int main() {
 
     while (true) {
 
-        while ((user_choice != "d") && (user_choice != "m") && (user_choice != "p")) {
-            cout << "You enter invalid input. Please try again and enter given charachters. " << endl;
-            cin >> user_choice;
-        }
+
 
 
 
@@ -402,33 +399,36 @@ int main() {
             // Array to store user's weaknesses (maximum 5 weak muscle groups)
             int userWeaknesses[5] = { -1, -1, -1, -1, -1 }; // Initialize to -1 to indicate unused slots
 
-            while (true) {
-                string input;
-                string user_input;
-                cout << "Would you like to initiate muscle reccomendation checker? Enter 'no' without quotes if you want to exit program. " << endl;
-                cin >> user_input;
 
-                if (user_input == "no") {
-                    cout << "You have come to the end of this program. Thanks!" << endl;
-                    break;
-                }
+            cout << "Would you like to initiate muscle reccomendation checker? Enter 'no' without quotes if you want to exit program. " << endl;
+            cin >> user_input;
+
+            if (user_input == "no") {
+                cout << "You have come to the end of this program. Thanks!" << endl;
+                break;
+            }
+
+
+                string input;
+
 
                 cout << "Which muscle groups do you consider weak? Enter numbers (0-4) corresponding to:" << endl;
                 for (int i = 0; i < numMuscleGroups; ++i) {
                     cout << i << ": " << muscleGroups[i] << endl;
                 }
-                while (input != "no") {
 
-                    if (input == "no") {
-                        //bool validInput = false;
-                        cout << "You have come to the end of this program. Thanks!";
-                        break;
-                    }
+                cout << "Enter your choices (comma-separated, e.g., 0,2). Or enter 'no without quotes to exit program. " << endl;
+                cin >> input;
+
+
+                if (input != "no") {
+
 
 
                     // Collect user input for selesting numbers that represent muscle weaknesses
-                    cout << "Enter your choices (comma-separated, e.g., 0,2). Or enter 'no without quotes to exit program. "<< endl;
-                    cin >> input;
+
+
+
 
 
 
@@ -481,11 +481,8 @@ int main() {
 
 
 
-                if (input == "no") {
-                    cout << "You have come to the end of this program. Thanks!";
-                    break;
-                }
-            }
+
+
 
         }
     }
