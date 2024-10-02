@@ -191,6 +191,38 @@ void weight_validation() {
     }
 }
 
+void level_input_validation(int level) {
+    while (true) {
+
+        if (level >= 1 && level <= 10) {
+            break; // valid input, exit the loop
+        }
+        else {
+            cout << "Invalid input. Please enter a number between 1 and 10." << endl;
+        }
+    }
+}
+
+void age_validation() {
+    while (true) {
+        cout << "What is your age? " << endl;
+        cin >> user_input;
+
+        if (isValidNumber(user_input)) {
+            age = stod(user_input); // Convert string to double
+            if (age > 0) {
+                break; // Valid input, exit loop
+            }
+            if(age > 100) {
+                cout << "Invalid input. Please enter a positive value for age that is 100 or less." << endl;
+            }
+        }
+        else {
+            cout << "Invalid input. Please enter a numeric value for age." << endl;
+        }
+    }
+}
+
 
 
 //Function to generate random number between 15 and 25
@@ -238,8 +270,7 @@ int main() {
 
                 // continue asking user for more inputs to get more tailored recommendation
 
-                cout << "Enter your age: ";
-                cin >> age;
+                age_validation();
 
                 cout << "Rate you activity level from 1 to 10: ";
                 cin >> activity_level;
@@ -251,6 +282,7 @@ int main() {
 
                 // Calculate BMI using function
                 user_BMI = calculateBMI(weight, height);
+                cout << user_BMI;
 
                 cout << "Your BMI is: " << user_BMI << endl;
 
@@ -259,6 +291,7 @@ int main() {
                     continue; // Skip further inputs if BMI is too high
                 }
 
+                //validation for muscle level input (0-10)
                 while (true) {
                     cout << "What would you rate your muscle mass level on a scale from 1 to 10: " << endl;
                     cin >> muscle_level;
