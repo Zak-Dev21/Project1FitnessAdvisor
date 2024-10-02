@@ -191,17 +191,47 @@ void weight_validation() {
     }
 }
 
-void level_input_validation(int level) {
+void musclelevel_validation() {
     while (true) {
+        cout << "What is your muscle level? Give number from 1 to 10 " << endl;
+        cin >> user_input;
 
-        if (level >= 1 && level <= 10) {
-            break; // valid input, exit the loop
+        if (isValidNumber(user_input)) {
+            muscle_level = stod(user_input); // Convert string to double
+            if (muscle_level > 0) {
+                break; // Valid input, exit loop
+            }
+            if(muscle_level > 10) {
+                cout << "Invalid input. Please enter a value from 1 to 10 for muscle level." << endl;
+            }
         }
         else {
-            cout << "Invalid input. Please enter a number between 1 and 10." << endl;
+            cout << "Invalid input. Please enter a numeric value for muscle level" << endl;
         }
     }
 }
+
+void fatlevel_validation() {
+    while (true) {
+        cout << "What is your fat level? Give number from 1 to 10 " << endl;
+        cin >> user_input;
+
+        if (isValidNumber(user_input)) {
+            fat_level = stod(user_input); // Convert string to double
+            if (fat_level > 0) {
+                break; // Valid input, exit loop
+            }
+            if (fat_level > 10) {
+                cout << "Invalid input. Please enter a value from 1 to 10 for fat level." << endl;
+            }
+        }
+        else {
+            cout << "Invalid input. Please enter a numeric value for muscle level" << endl;
+        }
+    }
+}
+
+
 
 void age_validation() {
     while (true) {
@@ -282,7 +312,6 @@ int main() {
 
                 // Calculate BMI using function
                 user_BMI = calculateBMI(weight, height);
-                cout << user_BMI;
 
                 cout << "Your BMI is: " << user_BMI << endl;
 
@@ -292,30 +321,12 @@ int main() {
                 }
 
                 //validation for muscle level input (0-10)
-                while (true) {
-                    cout << "What would you rate your muscle mass level on a scale from 1 to 10: " << endl;
-                    cin >> muscle_level;
 
-                    if (muscle_level >= 1 && muscle_level <= 10) {
-                        break; // valid input, exit the loop
-                    }
-                    else {
-                        cout << "Invalid input. Please enter a number between 1 and 10." << endl;
-                    }
-                }
+                
+                musclelevel_validation();
 
                 // Input and validation for fat level
-                while (true) {
-                    cout << "What would you rate your body fat level on a scale from 1 to 10: " << endl;
-                    cin >> fat_level;
-
-                    if (fat_level >= 1 && fat_level <= 10) {
-                        break; // valid input, exit the loop
-                    }
-                    else {
-                        cout << "Invalid input. Please enter a number between 1 and 10." << endl;
-                    }
-                }
+                fatlevel_validation();
 
                 provideRecommendation(user_BMI, muscle_level, fat_level);
 
