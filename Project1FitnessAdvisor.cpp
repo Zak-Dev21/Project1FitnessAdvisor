@@ -149,47 +149,29 @@ bool isValidNumber(const string& input) {
     return true;
 }
 
-// function used to validate height input and make sure it is a positive number
-void height_validation() {
+// function used to validate measurement input (height/weight) and make sure it is a positive number
+void measurements_validation(const string& prompt, double& measurement) {
+    string user_input; // Declare user_input inside the function
     while (true) {
-        cout << "What is your height in inches? " << endl;
+        cout << prompt << endl;
         cin >> user_input;
 
         if (isValidNumber(user_input)) {
-            height = stod(user_input); // Convert string to double
-            if (height > 0) {
+            measurement = stod(user_input); // Convert string to double
+            if (measurement > 0) {
                 break; // Valid input, exit loop
             }
             else {
-                cout << "Invalid input. Please enter a positive value for height." << endl;
+                cout << "Invalid input. Please enter a postive value." << endl;
             }
         }
         else {
-            cout << "Invalid input. Please enter a numeric value for height." << endl;
+            cout << "Invalid input. Please enter a numeric value." << endl;
         }
     }
 }
 
-// function used to validate height input and make sure it is a positive number
-void weight_validation() {
-    while (true) {
-        cout << "What is your weight in pounds? " << endl;
-        cin >> user_input;
 
-        if (isValidNumber(user_input)) {
-            weight = stod(user_input); // Convert string to double
-            if (weight > 0) {
-                break; // Valid input, exit loop
-            }
-            else {
-                cout << "Invalid input. Please enter a positive value for weight." << endl;
-            }
-        }
-        else {
-            cout << "Invalid input. Please enter a numeric value for weight." << endl;
-        }
-    }
-}
 
 void level_validation(const string& prompt, int& level) {
     string user_input; // Declare user_input inside the function
@@ -271,10 +253,12 @@ int main() {
                 }
 
                 // Input height with validation
-                height_validation();
+                measurements_validation("What is your height in inches? ", height);
+                
+                //height_validation();
 
                 // Input weight with validation
-                weight_validation();
+                measurements_validation("What is your weight in pounds? ", weight);
 
                 // continue asking user for more inputs to get more tailored recommendation
 
@@ -352,13 +336,13 @@ int main() {
 
                 
                 // validate input for height
-                height_validation();
+                measurements_validation("What is your height in inches? ", height);
 
 
 
 
                 // Input weight with validation
-                weight_validation();
+                measurements_validation("What is your weight in pounds? ", weight);
 
                 // Calculate BMI using function
                 user_BMI = calculateBMI(weight, height);
@@ -398,11 +382,8 @@ int main() {
                 cout << "Result " << (i + 1) << ": BMI = " << bmi_history[i]
                     << ", Muscle Level = " << muscle_levels[i]
                     << ", Fat Level = " << fat_levels[i] << endl;
-
                 
             }
-
-
             
         
         }
