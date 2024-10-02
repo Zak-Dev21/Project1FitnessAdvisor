@@ -191,45 +191,28 @@ void weight_validation() {
     }
 }
 
-void musclelevel_validation() {
+void level_validation(const string& prompt, int& level) {
+    string user_input; // Declare user_input inside the function
     while (true) {
-        cout << "What is your muscle level? Give number from 1 to 10 " << endl;
+        cout << prompt << " (Give a number from 1 to 10): " << endl;
         cin >> user_input;
 
         if (isValidNumber(user_input)) {
-            muscle_level = stod(user_input); // Convert string to double
-            if (muscle_level > 0) {
+            level = stod(user_input); // Convert string to double
+            if (level >= 1 && level <= 10) {
                 break; // Valid input, exit loop
             }
-            if(muscle_level > 10) {
-                cout << "Invalid input. Please enter a value from 1 to 10 for muscle level." << endl;
+            else {
+                cout << "Invalid input. Please enter a value from 1 to 10." << endl;
             }
         }
         else {
-            cout << "Invalid input. Please enter a numeric value for muscle level" << endl;
+            cout << "Invalid input. Please enter a numeric value." << endl;
         }
     }
 }
 
-void fatlevel_validation() {
-    while (true) {
-        cout << "What is your fat level? Give number from 1 to 10 " << endl;
-        cin >> user_input;
 
-        if (isValidNumber(user_input)) {
-            fat_level = stod(user_input); // Convert string to double
-            if (fat_level > 0) {
-                break; // Valid input, exit loop
-            }
-            if (fat_level > 10) {
-                cout << "Invalid input. Please enter a value from 1 to 10 for fat level." << endl;
-            }
-        }
-        else {
-            cout << "Invalid input. Please enter a numeric value for muscle level" << endl;
-        }
-    }
-}
 
 
 
@@ -262,15 +245,10 @@ int generateRandomExerciseDays() {
 }
 
 
-
-
 int main() {
 
 
-    
-    
-
-
+ 
     srand(static_cast<unsigned int>(time(0))); // seed the random number generator so new number shows every execution
 
     cout << "Chose between 'p':progress check (track progress over time) or 'd': direct fitness check or 'm': muscle exercise recemmondations. Enter single character either 'p' or 'd' or 'm' " << endl;
@@ -302,8 +280,8 @@ int main() {
 
                 age_validation();
 
-                cout << "Rate you activity level from 1 to 10: ";
-                cin >> activity_level;
+                //activity level validation;
+                level_validation("What is your activity level? Give number from 1 to 10 ", activity_level);
 
                 cout << "Do you have a health condition involving the following? (diabetic, heart, joint)."
                     "If yes enter it, otherwise enter 'other' if you have other health conditions, or enter 'none' if you have none." << endl;
@@ -321,12 +299,10 @@ int main() {
                 }
 
                 //validation for muscle level input (0-10)
-
-                
-                musclelevel_validation();
+                level_validation("What is your muscle level? Give number from 1 to 10 ", muscle_level);
 
                 // Input and validation for fat level
-                fatlevel_validation();
+                level_validation("What is your fat level? Give number from 1 to 10 ", fat_level);
 
                 provideRecommendation(user_BMI, muscle_level, fat_level);
 
@@ -394,11 +370,9 @@ int main() {
 
                 //cout << "Your BMI is: " << user_BMI << endl;
 
-                cout << "What would you rate your muscle mass level on a scale from 1 to 10: " << endl;
-                cin >> muscle_level;
+                level_validation("What is your muscle level? Give number from 1 to 10 ", muscle_level);
 
-                cout << "What would you rate your body fat level on a scale from 1 to 10: " << endl;
-                cin >> fat_level;
+                level_validation("What is your fat level? Give number from 1 to 10 ", fat_level);
 
                 bmi_history[count] = user_BMI;
                 muscle_levels[count] = muscle_level;
@@ -534,14 +508,7 @@ int main() {
 
                     }
 
-                 
-
-
                 }
-
-
-
-          
 
 
         }
