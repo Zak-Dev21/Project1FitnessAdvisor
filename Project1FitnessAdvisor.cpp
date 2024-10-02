@@ -205,7 +205,7 @@ int generateRandomExerciseDays() {
 int main() {
 
 
-    int numMuscleGroups = sizeof(muscleGroups) / sizeof(muscleGroups[0]); // calculating the number of elements in the muscleGroups array.
+    
     
 
 
@@ -310,15 +310,26 @@ int main() {
 
         if (user_choice == "p") {
             int count = 0;
+            bool exitProgram = false;
 
-            while (true) {
+
+            while (!exitProgram) {
                 cout << "Would you like to initiate progess check? Answer 'yes' or 'no' " << endl << "Keep in mind you only have a maximum of 10 entries to enter." << endl;
                 cin >> user_input; // prompting user to either run checker feature or exit
 
                 if (user_input == "no") {
-                    cout << "You have finished the progress check feature for this program. Thanks!" << endl;
+                    
+                    cout << "You have finished with the progress checker! Thanks" << endl;
+                    exitProgram = true;
                     break;
                 }
+
+                if (user_input != "yes") {
+                    cout << "Invalid input. Please enter 'yes' or 'no'." << endl;
+                    continue;  // Re-prompt for valid input
+                }
+
+
                 
                 // validate input for height
                 height_validation();
@@ -350,7 +361,18 @@ int main() {
                 fat_levels[count] = fat_level;
 
                 count++;
+
+                if (count >= 10) {
+                    cout << "You have reached the maximum number of entries." << endl;
+                    break;
+                }
+
+
+
             }
+
+
+
 
             // Display stored progress
             cout << "Here is your progress:" << endl;
@@ -361,6 +383,8 @@ int main() {
 
                 
             }
+
+
             
         
         }
@@ -397,6 +421,8 @@ int main() {
 
 
                 string input;
+
+                int numMuscleGroups = sizeof(muscleGroups) / sizeof(muscleGroups[0]); // calculating the number of elements in the muscleGroups array.
 
 
                 cout << "Which muscle groups do you consider weak? Enter numbers (0-4) corresponding to:" << endl;
