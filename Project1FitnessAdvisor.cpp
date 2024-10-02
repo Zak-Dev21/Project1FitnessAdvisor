@@ -9,6 +9,29 @@ using namespace std;
 
 const int BMI_CONSTANT = 703;
 
+double weight, height, user_BMI;
+string fav_activity;
+int muscle_level, fat_level;
+string user_choice;
+string user_input;
+int age;
+int activity_level;
+string health_condition;
+
+const int max_entries = 10; // Define the maximum number of entries
+double bmi_history[max_entries] = { 0 }; // Initialize the BMI history array
+int muscle_levels[max_entries] = { 0 }; // Initialize muscle levels array
+int fat_levels[max_entries] = { 0 }; // Initialize fat levels array
+
+const string muscleGroups[] = { "Chest", "Back", "Legs", "Arms", "Core" };
+const string exercises[][3] = {
+    {"Decline Push Ups", "Push Up", "Resistance Band Chest Fly"}, // Chest
+    {"Pull Up", "Bodyweight Row", "Chin Up"},          // Back
+    {"Squat", "Lunge", "Biking/Running"},         // Legs
+    {"Bicep Curl", "Tricep Dip", "Push Up"}, // Arms
+    {"Plank", "Crunch", "Leg Raises"}     // Core
+};
+
 // Function to calculate BMI
 double calculateBMI(double weight, double height) {
     return BMI_CONSTANT * (weight / pow(height, 2));
@@ -116,12 +139,6 @@ void provideRecommendation(int age, int activity_level, string &health_condition
     }
 }
 
-//Function to generate random number between 15 and 25
-int generateRandomExerciseDays() {
-    return rand() % 11 + 15; // generates random number between 15 and 25
-
-}
-
 // Function to check if a string is a valid number
 bool isValidNumber(const string& input) {
     for (char c : input) {
@@ -132,31 +149,64 @@ bool isValidNumber(const string& input) {
     return true;
 }
 
+// function used to validate height input and make sure it is a positive number
+void height_validation() {
+    while (true) {
+        cout << "What is your height in inches? " << endl;
+        cin >> user_input;
+
+        if (isValidNumber(user_input)) {
+            height = stod(user_input); // Convert string to double
+            if (height > 0) {
+                break; // Valid input, exit loop
+            }
+            else {
+                cout << "Invalid input. Please enter a positive value for height." << endl;
+            }
+        }
+        else {
+            cout << "Invalid input. Please enter a numeric value for height." << endl;
+        }
+    }
+}
+
+// function used to validate height input and make sure it is a positive number
+void weight_validation() {
+    while (true) {
+        cout << "What is your weight in pounds? " << endl;
+        cin >> user_input;
+
+        if (isValidNumber(user_input)) {
+            weight = stod(user_input); // Convert string to double
+            if (weight > 0) {
+                break; // Valid input, exit loop
+            }
+            else {
+                cout << "Invalid input. Please enter a positive value for weight." << endl;
+            }
+        }
+        else {
+            cout << "Invalid input. Please enter a numeric value for weight." << endl;
+        }
+    }
+}
+
+
+
+//Function to generate random number between 15 and 25
+int generateRandomExerciseDays() {
+    return rand() % 11 + 15; // generates random number between 15 and 25
+
+}
+
+
+
+
 int main() {
-    double weight, height, user_BMI;
-    string fav_activity;
-    int muscle_level, fat_level;
-    string user_choice;
-    string user_input;
-    int age;
-    int activity_level;
-    string health_condition;
 
-    const int max_entries = 10; // Define the maximum number of entries
-    double bmi_history[max_entries] = { 0 }; // Initialize the BMI history array
-    int muscle_levels[max_entries] = { 0 }; // Initialize muscle levels array
-    int fat_levels[max_entries] = { 0 }; // Initialize fat levels array
-
-    const string muscleGroups[] = { "Chest", "Back", "Legs", "Arms", "Core" };
-    const string exercises[][3] = {
-        {"Decline Push Ups", "Push Up", "Resistance Band Chest Fly"}, // Chest
-        {"Pull Up", "Bodyweight Row", "Chin Up"},          // Back
-        {"Squat", "Lunge", "Biking/Running"},         // Legs
-        {"Bicep Curl", "Tricep Dip", "Push Up"}, // Arms
-        {"Plank", "Crunch", "Leg Raises"}     // Core
-    };
 
     int numMuscleGroups = sizeof(muscleGroups) / sizeof(muscleGroups[0]); // calculating the number of elements in the muscleGroups array.
+    
 
 
     srand(static_cast<unsigned int>(time(0))); // seed the random number generator so new number shows every execution
@@ -181,42 +231,12 @@ int main() {
                 }
 
                 // Input height with validation
-                while (true) {
-                    cout << "What is your height in inches? " << endl;
-                    cin >> user_input;
-
-                    if (isValidNumber(user_input)) {
-                        height = stod(user_input); // Convert string to double
-                        if (height > 0) {
-                            break; // Valid input, exit loop
-                        }
-                        else {
-                            cout << "Invalid input. Please enter a positive value for height." << endl;
-                        }
-                    }
-                    else {
-                        cout << "Invalid input. Please enter a numeric value for height." << endl;
-                    }
-                }
+                height_validation();
 
                 // Input weight with validation
-                while (true) {
-                    cout << "What is your weight in pounds? " << endl;
-                    cin >> user_input;
+                weight_validation();
 
-                    if (isValidNumber(user_input)) {
-                        weight = stod(user_input); // Convert string to double
-                        if (weight > 0) {
-                            break; // Valid input, exit loop
-                        }
-                        else {
-                            cout << "Invalid input. Please enter a positive value for weight." << endl;
-                        }
-                    }
-                    else {
-                        cout << "Invalid input. Please enter a numeric value for weight." << endl;
-                    }
-                }
+                // continue asking user for more inputs to get more tailored recommendation
 
                 cout << "Enter your age: ";
                 cin >> age;
@@ -295,49 +315,19 @@ int main() {
                 cout << "Would you like to initiate progess check? Answer 'yes' or 'no' " << endl << "Keep in mind you only have a maximum of 10 entries to enter." << endl;
                 cin >> user_input; // prompting user to either run checker feature or exit
 
-
-                //cout << "Keep in mind when entering you info you do have a maximum of 10 entries";
-
-                while (true) {
-                    cout << "What is your height in inches? " << endl;
-                    cin >> height;
-
-
-                    if (isValidNumber(to_string(height))) {
-
-                        if (height > 0) {
-                            break; // Valid input, exit loop
-                        }
-                        else {
-                            cout << "Invalid input. Please enter a positive value for height." << endl;
-                        }
-                    }
-                    else {
-                        cout << "Invalid input. Please enter a numeric value for height." << endl;
-                    }
+                if (user_input == "no") {
+                    cout << "You have finished the progress check feature for this program. Thanks!" << endl;
+                    break;
                 }
+                
+                // validate input for height
+                height_validation();
 
 
 
 
                 // Input weight with validation
-                while (true) {
-                    cout << "What is your weight in pounds? " << endl;
-                    cin >> user_input;
-
-                    if (isValidNumber(user_input)) {
-                        weight = stod(user_input); // Convert string to double
-                        if (weight > 0) {
-                            break; // Valid input, exit loop
-                        }
-                        else {
-                            cout << "Invalid input. Please enter a positive value for weight." << endl;
-                        }
-                    }
-                    else {
-                        cout << "Invalid input. Please enter a numeric value for weight." << endl;
-                    }
-                }
+                weight_validation();
 
                 // Calculate BMI using function
                 user_BMI = calculateBMI(weight, height);
@@ -371,10 +361,7 @@ int main() {
 
                 
             }
-            if (user_input == "no") {
-                cout << "You have finished the progress check feature for this program. Thanks!" << endl;
-                break;
-            }
+            
         
         }
         
